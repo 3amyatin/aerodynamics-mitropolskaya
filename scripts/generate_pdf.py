@@ -14,9 +14,12 @@ import subprocess
 import sys
 import tempfile
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MD_FILE = os.path.join(BASE_DIR, "Seminar N. Metropolskaya. Aerodynamics of Sail.md")
-PDF_FILE = os.path.join(BASE_DIR, "Seminar N. Metropolskaya. Aerodynamics of Sail.pdf")
+SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.dirname(SCRIPTS_DIR)
+ARTICLE_DIR = os.path.join(PROJECT_DIR, "article")
+OUT_DIR = os.path.join(PROJECT_DIR, "out")
+MD_FILE = os.path.join(ARTICLE_DIR, "Seminar N. Metropolskaya. Aerodynamics of Sail.md")
+PDF_FILE = os.path.join(OUT_DIR, "Seminar N. Metropolskaya. Aerodynamics of Sail.pdf")
 
 FOOTER_LEFT = "Аэродинамика паруса — Н. Митропольская, 16.03.2026"
 
@@ -73,7 +76,7 @@ def md_to_html(md_path: str, html_path: str) -> None:
             "--standalone",
             "--katex",
             "--metadata", "title=",
-            "--resource-path", BASE_DIR,
+            "--resource-path", ARTICLE_DIR,
             "-o", html_path,
         ],
         check=True,
@@ -83,7 +86,7 @@ def md_to_html(md_path: str, html_path: str) -> None:
 
     # Inject CSS and fix image paths to absolute
     html = html.replace("</head>", CSS + "</head>")
-    html = html.replace('src="images/', f'src="file://{BASE_DIR}/images/')
+    html = html.replace('src="images/', f'src="file://{ARTICLE_DIR}/images/')
 
     # Fix TOC: pandoc merges bare links into one <p>. Split them with <br>.
     # Pattern: </a> <a  ->  </a><br>\n<a
@@ -261,6 +264,8 @@ def main() -> None:
     if not os.path.exists(MD_FILE):
         print(f"Error: {MD_FILE} not found")
         sys.exit(1)
+
+    os.makedirs(OUT_DIR, exist_ok=True)
 
     with tempfile.NamedTemporaryFile(suffix=".html", delete=False) as tmp:
         html_path = tmp.name

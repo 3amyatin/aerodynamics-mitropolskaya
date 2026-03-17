@@ -5,8 +5,11 @@ import re
 
 import pytest
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MD_FILE = os.path.join(BASE_DIR, "Seminar N. Metropolskaya. Aerodynamics of Sail.md")
+SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.dirname(SCRIPTS_DIR)
+ARTICLE_DIR = os.path.join(PROJECT_DIR, "article")
+BASE_DIR = ARTICLE_DIR  # tests reference images relative to article dir
+MD_FILE = os.path.join(ARTICLE_DIR, "Seminar N. Metropolskaya. Aerodynamics of Sail.md")
 
 
 @pytest.fixture
@@ -47,10 +50,10 @@ class TestFileStructure:
         assert os.path.isdir(os.path.join(BASE_DIR, "images"))
 
     def test_generate_script_exists(self):
-        assert os.path.exists(os.path.join(BASE_DIR, "generate_pdf.py"))
+        assert os.path.exists(os.path.join(SCRIPTS_DIR, "generate_pdf.py"))
 
     def test_justfile_exists(self):
-        assert os.path.exists(os.path.join(BASE_DIR, "justfile"))
+        assert os.path.exists(os.path.join(PROJECT_DIR, "justfile"))
 
 
 # --- Image integrity ---
