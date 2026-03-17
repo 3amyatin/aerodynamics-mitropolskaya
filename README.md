@@ -1,37 +1,37 @@
-# Аэродинамика паруса — семинар Н. Митропольской
+# Sail Aerodynamics — Seminar by N. Mitropolskaya
 
-Транскрипция и иллюстрированная статья по семинару Натальи Митропольской об аэродинамике паруса для яхт-клуба [Equipage](https://equipage.club), 16 марта 2026 г.
+Transcription and illustrated article based on Natalia Mitropolskaya's seminar on sail aerodynamics for the yacht club [Equipage](https://equipage.club), March 16, 2026.
 
-Видео: [youtu.be/MXJhzNGrsMo](https://youtu.be/MXJhzNGrsMo)
+Video: [youtu.be/MXJhzNGrsMo](https://youtu.be/MXJhzNGrsMo)
 
-## Содержание семинара
+## Seminar Contents
 
-1. Аэродинамическая сила и механизм её возникновения
-2. Параметры потока и тела обтекания
-3. Компоненты аэродинамической силы (lift, drag, FD, heeling)
-4. Методы определения: уравнения Навье–Стокса, CFD, аэродинамические трубы
-5. Теория циркуляции (теорема Кутты–Жуковского) и ограничения её интерпретации
-6. Закон Бернулли: возможности и ограничения
-7. Разбор 9 популярных объяснений подъёмной силы (что верно, что нет)
-8. Аэродинамические коэффициенты, поляра профиля, VPP
-9. Ламинарный и турбулентный потоки, число Рейнольдса
-10. Пограничный слой, его отрыв и срыв потока
+1. Aerodynamic force and the mechanism of its generation
+2. Flow and body parameters
+3. Components of aerodynamic force (lift, drag, FD, heeling)
+4. Determination methods: Navier-Stokes equations, CFD, wind tunnels
+5. Circulation theory (Kutta-Joukowski theorem) and limitations of its interpretation
+6. Bernoulli's law: capabilities and limitations
+7. Analysis of 9 popular explanations of lift (what is correct and what is not)
+8. Aerodynamic coefficients, airfoil polar, VPP
+9. Laminar and turbulent flows, Reynolds number
+10. Boundary layer, its separation and flow stall
 
-## Генерация PDF
+## PDF Generation
 
 ```
-just setup  # установить Chromium (один раз)
-just pdf    # сгенерировать PDF из Markdown
-just test   # запустить тесты целостности
-just check  # проверить ссылки на изображения
+just setup  # install Chromium (once)
+just pdf    # generate PDF from Markdown
+just test   # run integrity tests
+just check  # verify image references
 ```
 
-PDF включает: содержание с закладками, колонтитулы с названием раздела и нумерацией страниц, формулы KaTeX, 50 иллюстраций из слайдов.
+The PDF includes: table of contents with bookmarks, headers/footers with section title and page numbering, KaTeX formulas, 50 illustrations from slides.
 
-## Зависимости
+## Dependencies
 
-- [pandoc](https://pandoc.org/) — конвертация Markdown → HTML
-- [uv](https://docs.astral.sh/uv/) — управление Python-зависимостями
-- [playwright](https://playwright.dev/python/) + Chromium — рендеринг HTML → PDF
-- [pymupdf](https://pymupdf.readthedocs.io/) — колонтитулы, закладки (TOC), наложение текста
-- [pytest](https://pytest.org/) — тесты целостности статьи
+- [pandoc](https://pandoc.org/) — Markdown to HTML conversion
+- [uv](https://docs.astral.sh/uv/) — Python dependency management
+- [playwright](https://playwright.dev/python/) + Chromium — HTML to PDF rendering
+- [pymupdf](https://pymupdf.readthedocs.io/) — headers/footers, bookmarks (TOC), text overlay
+- [pytest](https://pytest.org/) — article integrity tests
