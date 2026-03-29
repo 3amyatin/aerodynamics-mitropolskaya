@@ -3,6 +3,7 @@
 
 md := "article/Seminar N. Metropolskaya. Aerodynamics of Sail.md"
 pdf := "out/Seminar N. Metropolskaya. Aerodynamics of Sail.pdf"
+docx := "out/Seminar N. Metropolskaya. Aerodynamics of Sail.docx"
 
 # Run tests
 test:
@@ -15,6 +16,10 @@ pdf:
 # Install playwright browser (first-time setup)
 setup:
     uv run --with playwright python -m playwright install chromium
+
+# Generate DOCX from Markdown
+docx:
+    uv run python scripts/generate_docx.py
 
 # Open the PDF
 open:
